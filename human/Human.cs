@@ -1,42 +1,60 @@
 namespace human
 {
-  class Human
+    class Human
     {
-        private string Name;
-        private int Strength;
-        private int Intelligence;
-        private int Dexterity;
-        private int Health;
+        protected string Name { get; set; }
+        protected int Strength { get; set; }
+        protected int Intelligence { get; set; }
+        protected int Dexterity { get; set; }
+        private int _health;
+
+        public int GetHealth()
+        {
+            return _health;
+        }
+
+        public void SetHealth(int value)
+        {
+            _health = value;
+        }
 
         public Human(string name)
         {
             Strength = 3;
             Intelligence = 3;
             Dexterity = 3;
-            Health = 100;
+            SetHealth(100);
             Name = name;
         }
-        public Human(
-            string name, 
-            int str,
-            int dex,
-            int intelligence,
-            int health)
+        public Human(string name, int str, int dex, int intelligence, int health)
         {
-           Name = name; 
-           Strength = str;
-           Dexterity = dex;
-           Intelligence = intelligence;
-           Health = health;
+            Name = name;
+            Strength = str;
+            Dexterity = dex;
+            Intelligence = intelligence;
+            SetHealth(health);
         }
 
-        public void Attack(Human target) 
+        public void Attack(Human target)
         {
-            target.Health -= Strength * 5;
-            Health -= Strength;
-            System.Console.WriteLine(Name + " attacked " + target.Name);
-            System.Console.WriteLine(target.Name + " has " + target.Health + " health remaining");
+            System.Console.WriteLine(Name + " attacked " + target);
+            target.SetHealth(target.GetHealth() - Strength * 5);
+            SetHealth(GetHealth() - Strength);
+            System.Console.WriteLine(target.Name + " now has " + target.GetHealth() + " health remaining");
+            target.isDead();
+            isDead();
         }
- 
+
+        public void isDead()
+        {
+            if (GetHealth() <= 0)
+                System.Console.WriteLine(Name + " has fallen in battle...");
+        }
+
+        public override string ToString()
+        {
+            return $"{Name} - HP: {_health}";
+        }
+
     }
 }

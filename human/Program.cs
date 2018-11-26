@@ -6,18 +6,25 @@ namespace human
     {
         static void Main(string[] args)
         {
-            Human brittany = new Human("Brittany");
-            Human morgan = new Human("Morgan");
+            var ninjaFactory = new NinjaFactory();
+            Samurai brittany = new Samurai("Brittany");
+            Ninja morgan = ninjaFactory.CreateNinja("Morgan");
+            Ninja cat = ninjaFactory.CreateNinja("TacoCat");
+            Wizard gandalf = new Wizard("Gandalf");
             brittany.Attack(morgan);
             brittany.Attack(morgan);
             brittany.Attack(morgan);
             brittany.Attack(morgan);
-            brittany.Attack(morgan);
-            brittany.Attack(morgan);
-            brittany.Attack(morgan);
-            brittany.Attack(morgan);
-            brittany.Attack(morgan);
-            brittany.Attack(morgan);
+            brittany.DeathBlow(morgan);
+            cat.Attack(brittany);
+            gandalf.FireBall(cat);
+
+            Console.WriteLine(brittany);
+            Console.WriteLine(morgan);
+            Console.WriteLine(cat);
+            Console.WriteLine(gandalf);
+
+            ninjaFactory.HowMany();
         }
     }
 }
