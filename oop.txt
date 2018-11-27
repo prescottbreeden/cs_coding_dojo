@@ -6,9 +6,8 @@
 
 - Classes are the building blocks of software applications
 - A class encapsulates data (stored in properties) and behavior (defined by methods).
-- An object is an instance of a class.  We can create an object using the new operator.
-
-User bob = new User();
+- An object is an instance of a class.  We can create an object using the new 
+  operator. ( e.g. User bob = new User(); )
 
 +----------------+
 |  CONSTRUCTORS  |
@@ -16,59 +15,107 @@ User bob = new User();
 - A constructor is a method that is called when an instance of a class is created.
 - Constructors should have the exact same name as the class.
 - A quick way to create a constructor is to type "ctor" and press tab.
-- Constructors can be overloaded. Overloading means creating a new method with the same name 
-  but with a different signatures.
+- Constructors can be overloaded. Overloading means creating a new method with the 
+    same name but with different signatures.
 
 +-----------+
 |  METHODS  |
 +-----------+
 - Signature of a method consists of the number, type, and order of its parameters.
-- Overloading a method means having a method with the same name but with different signatures.
+- Overloading a method means having a method with the same name but with different 
+  signatures.
 
 +----------+
 |  FIELDS  |
 +----------+
-- A field can be initialized in two ways: in a constructor, or directly upon declaration.
-- The benefit of initializing during declaration is that if your class has one or more constructors,
-    you'll make sure that the field will always be initialized irrespective of which constructor
-    is going to be called.
+- A field can be initialized in two ways: 
+    in a constructor, or directly upon declaration.
 
 +--------------------+
 |  ACCESS MODIFIERS  |
 +--------------------+
-
-- In C# we have 5 access modifiers: public, private, protected, internal and protected internal.
-- If you are ahead in the content, feel free to take a peek at the last 3 of these,
-    otherwise the most important thing is to be comfortable with implementing public and private 
-    access modifiers.
-    
+- In C# we have 6 access modifiers: 
+    public, private, protected, internal, protected internal, and private protected
+- If you are ahead in the content, feel free to take a peek at the last 4 of these,
+    otherwise the most important thing is to be comfortable with implementing 
+    PUBLIC and PRIVATE access modifiers.
 - A class member declared with public is accessible everywhere.
 - A class member declared with private is accessible only from inside the class.
-
-- Access Modifiers hide the implementation details of a class. So anything that is about "how" 
-    a class does its job should be declared as private.  This way, we make sure other parts of 
-    the code will not touch the implementation detail of a class.  This improves the robustness 
-    of our code.  If a change then needs to be made in the way a class is implemented, we will 
-    only need to make changes inside of the class because we are limiting other parts of the
-    codebase from interacting directly with the data encapsulated by the class.
+- Access Modifiers hide the implementation details of a class. So anything that 
+    is about "how" a class does its job should be declared as private.  This way, 
+    we make sure other parts of the code will not touch the implementation detail 
+    of a class.  This improves the robustness of our code.  If a change then needs 
+    to be made in the way a class is implemented, we will only need to make changes 
+    inside of the class because we are limiting other parts of the codebase from 
+    interacting directly with the data encapsulated by the class.
 
 +--------------+
 |  PROPERTIES  |
 +--------------+
-
-- A "get" property accessor is used to return the property value, and a "set" property accessor 
-    is used to assign a new value.
-
+- A "get" property accessor is used to return the property value, and a "set" 
+    property accessor is used to assign a new value.
 - Accessors can have different access levels (e.g. public get and private set). 
-
 - Descriptions attributed to property access levels:
-    read-write: has both a get and a set accessor
+    read-and-write: has both a get and a set accessor
     read-only: has only a get accessor and no set accessor
     write-only: has only a set accessor but no get accessor (rare)
+- Simple properties that require no custom accessor code can be implemented as an 
+    auto-implemented property (e.g. { get; set; } ).
+- A quick way to create a field with auto-implemented properties is to type "prop" 
+    and press tab.
+- Generally speaking, we want to declare fields as private and create public 
+    properties to provide access to them.
 
-- Simple properties that require no custom accessor code can be implemented as an auto-implemented
-    property (e.g. { get; set; } ).
-- A quick way to create a field with auto-implemented properties is to type "prop" and press tab.
++---------------------+
+|  CRITICAL THINKING  |
++---------------------+
+Discuss the following questions in groups of 2-3 people.
 
-- Generally speaking, we want to declare fields as private and create public properties 
-    to provide access to them.
+- How do classes store data?
+
+- How do classes do stuff with data?
+
+- What is encapsulation and why is it important in programming?
+
+- What are some times where you might wish to make a field:
+    read-and-write?
+    read-only?
+    write-only?
+
+- What is a method signature and how are they related to overloading?
+
+- What are the advantages/disadvantages of creating multiple overloads for a 
+    class constructor?
+
+- What are the advantages/disadvantages of creating multiple overloads for a 
+    class method?
+
+- What is the benefit of initializing fields during declaration versus during a 
+    constructor?
+
+    --------- example 1 ----------
+
+      public class Person
+      {
+        private List<string> favoriteMovies;
+
+        public Person(string name)
+        {
+          favoriteMovies = new List<string>();
+        }
+      }
+
+    --------- example 2 ----------
+
+      public class Person
+      {
+        private List<string> favoriteMovies = new List<string>();
+
+        public Person()
+        {
+
+        }
+      }
+
+  **hint**  What if our class has 3 or more constructors utilizing different 
+            overloads, does this impact our thoughts?
