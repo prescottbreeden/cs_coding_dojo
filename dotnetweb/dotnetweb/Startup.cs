@@ -53,9 +53,6 @@ namespace dotnetweb
             app.UseCookiePolicy();
 
             app.UseMvc();
-
-            Console.WriteLine(env.ContentRootPath);
-            Console.WriteLine(env.IsDevelopment());
         }
     }
 }

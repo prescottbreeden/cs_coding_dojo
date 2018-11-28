@@ -10,9 +10,9 @@ namespace dotnetweb.Controllers
     {
         [HttpGet]
         [Route("")]
-        public string Index()
+        public ViewResult Index()
         {
-            return "Welcome user...";
+            return View();
         }
 
         [HttpGet]
@@ -31,9 +31,9 @@ namespace dotnetweb.Controllers
 
         [HttpPost]
         [Route("/users")]
-        public IActionResult AddUser()
+        public RedirectToActionResult AddUser()
         {
-            return Redirect("");
+            return RedirectToAction("Index");
         }
 
     }
