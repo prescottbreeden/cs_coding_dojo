@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Balls Page";
+}
+
+<main class="main">
+    <h1 class="title">Here are some delicious foods!</h1>
+    <div class="items">
+        @foreach (string ball in ViewBag.balls)
+        {
+            <h2>@ball</h2>
+        }
+    </div>
+</main>
