@@ -73,7 +73,7 @@ Discuss the following questions in groups of 2-3 people.
 
 - How do classes store data?
 
-- How do classes do stuff with data?
+- How do classes manipulate field values (i.e. data)?
 
 - What is encapsulation and why is it important in programming?
 

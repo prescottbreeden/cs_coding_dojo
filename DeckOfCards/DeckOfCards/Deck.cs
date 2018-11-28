@@ -7,8 +7,8 @@ namespace DeckOfCards
     {
         private List<Card> Cards = new List<Card>();
         private const int Size = 52;
-        private string[] Faces = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king", "ace" };
         private string[] Suits = { "hearts", "clubs", "spades", "diamonds" };
+        private string[] Faces = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king", "ace" };
         private int[] Values = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
 
         public Deck()
