@@ -10,28 +10,28 @@ namespace dotnetweb.Controllers
     {
         [HttpGet]
         [Route("")]
-        public ViewResult Index()
+        public IActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
         [Route("/users/{id}")]
-        public string GetUsers(string id)
+        public IActionResult GetUsers(string id)
         {
-            return $"Getting user {id}..";
+            return Json($"Getting user {id}..");
         }
 
         [HttpGet]
         [Route("/users")]
-        public string GetAll()
+        public IActionResult GetAll()
         {
-            return "Getting all users..";
+            return Json("Getting all users..");
         }
 
         [HttpPost]
         [Route("/users")]
-        public RedirectToActionResult AddUser()
+        public IActionResult AddUser()
         {
             return RedirectToAction("Index");
         }
