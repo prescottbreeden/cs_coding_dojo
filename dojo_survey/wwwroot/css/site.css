@@ -25,3 +25,20 @@ body {
 .form__textarea {
     width: 100%;
 }
+
+.users {
+    
+}
+
+.users__row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.users__item {
+    width: 35%;
+}
+.users__row:first-child {
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using dojo_survey.Models
+@model User
+@{
     ViewData["Title"] = "Dojo Survey";
 }
 <h2 class="form__title">Dojo Survey</h2>
@@ -34,3 +36,24 @@
     </textarea>
     <button>Submit</button>
 </form>
+
+<h2 class="users__title">All Users</h2>
+<div class="users__list">
+    <div class="users__row">
+        <p class="users__item">Name</p>
+        <p class="users__item">Dojo Location</p>
+        <p class="users__item">Favorite Language</p>
+        <p class="users__item">Comment</p>
+    </div>
+    @{
+        foreach (User user in ViewBag.users)
+        {
+            <div class="users__row">
+                <p class="users__item">@user.Name</p>
+                <p class="users__item">@user.DojoLocation</p>
+                <p class="users__item">@user.FavoriteLanguage</p>
+                <p class="users__item">@user.Comment</p>
+            </div>
+        }
+    }
+</div>

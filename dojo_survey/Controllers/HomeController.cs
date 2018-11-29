@@ -8,40 +8,24 @@ using dojo_survey.Models;
 
 namespace dojo_survey.Controllers
 {
-    public class HomeController : Controller
+  public class HomeController : Controller
     {
         [HttpGet]
         [Route("")]
         public IActionResult Index()
         {
+            ViewBag.users = UserFactory.AllUsers;
             return View();
         }
 
         [HttpPost]
         [Route("/process")]
-        public IActionResult Process(
-                string Name, 
-                string DojoLocation, 
-                string FavoriteLanguage,
-                string Comment
-            )
+        public IActionResult Process(string Name, string DojoLocation, string FavoriteLanguage, string Comment)
         {
-            System.Console.WriteLine("================");
-            System.Console.WriteLine("{0}, {1}, {2}", 
-                Name, DojoLocation, FavoriteLanguage, Comment);
-            System.Console.WriteLine("================");
+            UserFactory.CreateUser(Name, DojoLocation, FavoriteLanguage, Comment);
 
-            return RedirectToAction("Result");
+            return RedirectToAction("Index");
         }
-
-        [HttpGet]
-        [Route("/result")]
-        public IActionResult Result()
-        {
-
-            return View();
-        }
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
