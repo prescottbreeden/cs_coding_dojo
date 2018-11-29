@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Dojo Survey";
+}
+<h2 class="form__title">Dojo Survey</h2>
+<form class="form" action="Process" method="post">
+    <div class="form__row">
+        <label for="name_field">Your Name:</label>
+        <input type="text" name="Name" id="name_field">
+    </div>
+    <div class="form__row">
+        <label class="form__label"for="location_field">Dojo Location:</label>
+        <select name="DojoLocation" id="location_field">
+            <option value="Seattle">Seattle</option>
+            <option value="New York">New York</option>
+            <option value="San Fransisco">San Fransisco</option>
+            <option value="Dallas">Dallas</option>
+        </select>
+    </div>
+    <div class="form__row">
+        <label class="form__label" for="language_field">Favorite Language:</label>
+        <select name="FavoriteLanguage">
+            <option value="Python">Python</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="C#">C#</option>
+            <option value="Erlung">Erlung</option>
+        </select>
+    </div>
+    <label class="form__label" for="comment_field">Comment (optional):</label>
+    <textarea 
+        class="form__textarea" 
+        name="Comment" 
+        id="comment_field" 
+        cols="30" rows="10">
+    </textarea>
+    <button>Submit</button>
+</form>
