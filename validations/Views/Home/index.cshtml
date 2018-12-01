@@ -1,0 +1,41 @@
+@model User
+<h2 class="title">Create New User</h2>
+
+<form 
+  asp-action="CreateNew" 
+  asp-controller="Home"
+  class="form" 
+  method="post">
+
+  <span asp-validation-for="Name" class="form__validation"></span>
+  <div class="form__row">
+    <label asp-for="Name" class="form__label">Name:</label>
+    <input asp-for="Name" class="form__input">
+  </div>
+  <span asp-validation-for="Email" class="form__validation"></span>
+  <div class="form__row">
+    <label asp-for="Email" class="form__label">Email:</label>
+    <input type="email" asp-for="Email" class="form__input">
+  </div>
+  <span asp-validation-for="Birthdate" class="form__validation"></span>
+  <div class="form__row">
+    <label asp-for="Birthdate" class="form__label">Birthdate:</label>
+    <input asp-for="Birthdate" type="Date">
+  </div>
+  <button>Submit</button>
+
+</form>
+
+<h2 class="title">All Users</h2>
+<div class="users">
+  @{
+    foreach (User user in UserFactory.AllUsers)
+    {
+      <div class="users__row">
+        <p>@user.Name</p>
+        <p>@user.Email</p>
+        <p>@user.Birthdate</p>
+      </div>
+    }
+  }
+</div>

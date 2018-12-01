@@ -1,0 +1,36 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 2rem;
+    padding: 3rem;
+}
+
+.title {
+    margin: 2rem;
+}
+
+.form {
+    width: 30%;
+}
+
+.form__row {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+.users {
+    width: 30%;
+}
+.users__row {
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
