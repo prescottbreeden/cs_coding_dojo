@@ -12,90 +12,55 @@ namespace dojodachi.Controllers
 {
     public class HomeController : Controller
     {
-        [HttpGet]
-        [Route("")]
+        [HttpGet("")]
         public IActionResult Index()
         {
             Dojodachi dojo = GetDojodachi();
-            dojo.UpdateImage();
             return View(dojo);
         }
 
-        [HttpGet]
-        [Route("/feed")]
+        [HttpGet("/feed")]
         public IActionResult Feed()
         {
             Dojodachi dojo = GetDojodachi();
-            if(dojo.Meals > 0) 
-            {
-                Random rand = new Random();
-                dojo.Fullness += rand.Next(5, 10);
-                dojo.Meals--;
-                HttpContext.Session.SetString("dachi", JsonConvert.SerializeObject(dojo));
-
-                return RedirectToAction("Index");
-            }
-            else {
-                dojo.Meals = 0;
-                string err = "You have no more food to feed Dachi. Better put your Dachi to work!";
-                ViewBag.Error = err;
-
-                return View("Index", dojo);
-            }
+            dojo.Feed();
+            SaveDojodachi(dojo);
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        [Route("/play")]
+        [HttpGet("/play")]
         public IActionResult Play()
         {
             Dojodachi dojo = GetDojodachi();
-            if(dojo.Energy > 0)
-            {
-                Random rand = new Random();
-                dojo.Happiness += rand.Next(5, 10);
-                dojo.Energy -= 5;
-                HttpContext.Session.SetString("dachi", JsonConvert.SerializeObject(dojo));
-
-                return RedirectToAction("Index");
-            }
-            else {
-                string err = "Oh no! Dojodachi has collapsed from exhaustion!";
-                ViewBag.Error = err;
-
-                return View("Index", dojo);
-            }
+            dojo.Play();
+            SaveDojodachi(dojo);
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        [Route("/work")]
+        [HttpGet("/work")]
         public IActionResult Work()
         {
             Dojodachi dojo = GetDojodachi();
-            if(dojo.Energy > 0)
-            {
-                Random rand = new Random();
-                dojo.Meals += rand.Next(1, 3);
-                dojo.Energy -= 5;
-                HttpContext.Session.SetString("dachi", JsonConvert.SerializeObject(dojo));
-                return RedirectToAction("Index");
-            }
-            else return View("Index", dojo);
+            dojo.Work();
+            SaveDojodachi(dojo);     
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        [Route("/sleep")]
+        [HttpGet("/sleep")]
         public IActionResult Sleep()
         {
             Dojodachi dojo = GetDojodachi();
-            if (dojo.Fullness > 0 || dojo.Happiness > 0) {
-                dojo.Energy += 15;
-                dojo.Fullness -= 5;
-                dojo.Happiness -= 5;
-                HttpContext.Session.SetString("dachi", JsonConvert.SerializeObject(dojo));
+            dojo.Sleep();
+            SaveDojodachi(dojo);
+            return RedirectToAction("Index");
+        }
 
-                return RedirectToAction("Index");
-            }
-            else return View("Index", dojo);
+        [HttpGet("/reset")]
+        public IActionResult Reset()
+        {
+            Dojodachi dojo = new Dojodachi();
+            SaveDojodachi(dojo);
+            return RedirectToAction("Index");
         }
 
         public Dojodachi GetDojodachi()
@@ -112,6 +77,10 @@ namespace dojodachi.Controllers
                 Dojodachi dojo = JsonConvert.DeserializeObject<Dojodachi>(dd);
                 return dojo;
             }
+        }
+        public void SaveDojodachi(Dojodachi dojo) 
+        {
+            HttpContext.Session.SetString("dachi", JsonConvert.SerializeObject(dojo));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
