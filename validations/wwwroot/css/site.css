@@ -26,11 +26,24 @@ body {
     margin: 1rem;
 }
 
+
+.form__textarea {
+    width: 50%;
+}
+
+.form__validation {
+    color: red;
+}
+
 .users {
-    width: 30%;
+    width: 50%;
 }
 .users__row {
     margin: 1rem;
     display: flex;
     justify-content: space-between;
+}
+
+.users__row p {
+    width: 25%;
 }

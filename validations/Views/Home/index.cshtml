@@ -1,6 +1,7 @@
 @model User
+<p>Welcome @ViewBag.Name</p>
 <h2 class="title">Create New User</h2>
-
+<p>Times reloaded: @ViewBag.Counter</p>
 <form 
   asp-action="CreateNew" 
   asp-controller="Home"
@@ -20,7 +21,12 @@
   <span asp-validation-for="Birthdate" class="form__validation"></span>
   <div class="form__row">
     <label asp-for="Birthdate" class="form__label">Birthdate:</label>
-    <input asp-for="Birthdate" type="Date">
+    <input asp-for="Birthdate" type="Date" class="form__birthday">
+  </div>
+  <span asp-validation-for="Comment" class="form__validation"></span>
+  <div class="form__row">
+    <label asp-for="Comment" class="form__label">Comment:</label>
+    <textarea asp-for="Comment" class="form__textarea" rows="10"></textarea>
   </div>
   <button>Submit</button>
 
@@ -34,7 +40,7 @@
       <div class="users__row">
         <p>@user.Name</p>
         <p>@user.Email</p>
-        <p>@user.Birthdate</p>
+        <p>@user.Birthdate.Value.ToString("MMM d, yyyy")</p>
       </div>
     }
   }

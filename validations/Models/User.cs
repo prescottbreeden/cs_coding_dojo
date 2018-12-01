@@ -5,22 +5,21 @@ namespace validations.Models
 {
   public class User
   {
-    [NoFutureDate]
-    private DateTime _birthdate { get; set; }
-
-    public string Birthdate
-    {
-      get
-      {
-        return _birthdate.ToShortDateString();
-      }
-    }
 
     [Required, MinLength(3), NoZNames]
+    [Display(Name = "name")]
     public string Name { get; set; }
 
     [Required, EmailAddress]
+    [Display(Name = "email")]
     public string Email { get; set; }
+
+    [Required, NoFutureDate]
+    [Display(Name = "birthdate")]
+    public DateTime? Birthdate { get; set; }
+
+    [MinLength(20, ErrorMessage = "Comments must be 20 characters or more.")]
+    public string Comment { get; set; }
 
     public User() { }
 
@@ -28,7 +27,15 @@ namespace validations.Models
     {
       Name = name;
       Email = email;
-      _birthdate = birthdate;
+      Birthdate = birthdate;
+    }
+
+    public User(string name, string email, DateTime birthdate, string comment)
+    {
+      Name = name;
+      Email = email;
+      Birthdate = birthdate;
+      Comment = comment;
     }
   }
 }

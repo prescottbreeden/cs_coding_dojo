@@ -9,12 +9,12 @@ namespace validations.Models
     {
       if (value == null)
       {
-        return new ValidationResult("Date must be valid.");
+        return new ValidationResult("Please enter a valid birthdate");
       }
       DateTime data = ( DateTime )value;
       DateTime now = DateTime.Now;
-      if (data >= now) 
-        return new ValidationResult("Date cannot be in the future!");
+      if (data >= now.AddDays(-1)) 
+        return new ValidationResult("Please enter a valid birthdate");
       return ValidationResult.Success;
     }
   }
