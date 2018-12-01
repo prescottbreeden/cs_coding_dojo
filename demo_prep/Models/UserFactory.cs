@@ -19,5 +19,11 @@ namespace demo_prep.Models
       AllUsers.Add(newUser);
       return newUser;
     }
+    
+    public static User NewUser(User user)
+    {
+      AllUsers.Add(user);
+      return user;
+    }
   }
 }

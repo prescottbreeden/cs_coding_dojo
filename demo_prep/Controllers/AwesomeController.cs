@@ -9,36 +9,18 @@ namespace demo_prep.Controllers
     [Route("")]
     public IActionResult Index()
     {
-      // query the database => static class
-      // query the db => pass into view
-      // User bugs = UserFactory.NewUser("Bugs Bunny", "bugs@gmail.com", "seattle");
 
       return View();
     }
 
     [HttpPost]
     [Route("/users")]
-    public IActionResult NewUser(string name, string email, string location)
+    public IActionResult NewUser(User user)
     {
-      UserFactory.NewUser(name, email, location);
+      UserFactory.NewUser(user);
 
       return RedirectToAction("Index");
     }
 
-    // [HttpGet]
-    // [Route("/test")]
-    // public IActionResult Test(User newUser)
-    // {
-    //   ViewBag.userName = newUser.Name;
-    //   return View();
-    // }
-
-    // [HttpGet]
-    // [Route("/test2")]
-    // public IActionResult Test2(string name, string email, string location)
-    // {
-    //   ViewBag.name = name;
-    //   return View("test");
-    // }
   }
 }
