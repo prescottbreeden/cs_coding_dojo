@@ -1,13 +1,23 @@
 ﻿@model Dojodachi
 
-Meals: @Model.Meals
-Energy: @Model.Energy
-Fullness: @Model.Fullness
-Happiness: @Model.Happiness
-
-<Form method="post" action="/feed"> <button>Feed</button> </Form>
-<Form method="post" action="/play"> <button>Play</button> </Form>
-<Form method="post" action="/work"> <button>Work</button> </Form>
-<Form method="post" action="/sleep"> <button>Sleep</button> </Form>
-
-@ViewBag.Error
+<h1 class="title">Dojodachi</h1>
+<div class="wrapper">
+  <div class="game-container">
+    <div class="stats">
+      <p>Meals: @Model.Meals</p>
+      <p>Energy: @Model.Energy</p>
+      <p>Fullness: @Model.Fullness</p>
+      <p>Happiness: @Model.Happiness</p>
+    </div>
+    <div class="dojodachi">
+      <img class="dojodachi__img" src="@Url.Content(Model.Image)" alt="Dojodachi">
+    </div>
+  </div>
+  <div class="ui">
+    <a class="button" href="/feed">Feed</a>
+    <a class="button" href="/play">Play</a>
+    <a class="button" href="/work">Work</a>
+    <a class="button" href="/sleep">Sleep</a>
+  </div>
+  <p class="dojodachi__error">@ViewBag.Error</p>      
+</div>
