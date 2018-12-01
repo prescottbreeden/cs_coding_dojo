@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using Microsoft.AspNetCore.Http;
 
 namespace dojodachi.Models
@@ -43,10 +44,17 @@ namespace dojodachi.Models
       if (!IsDead && !MegaDachi)
       {
         Random rand = new Random();
-        Happiness += rand.Next(5, 10);
-        Energy -= 5;
-        UpdateImage();
-        UpdateStatus();
+        if (rand.Next(1,5)==1)
+        {
+          Status = "Dojodachi doesn't want to play.";
+        }
+        else 
+        {
+          Happiness += rand.Next(5, 10);
+          Energy -= 5;
+          UpdateImage();
+          UpdateStatus();
+        }
       }
     }
 
@@ -104,14 +112,15 @@ namespace dojodachi.Models
 
     public void IsFeeling()
     {
-      int minStat = Fullness;
+      int[] stats = { Fullness, Energy, Happiness };
+      int minStat = (from s in stats select s).Min();
 
-      if (Energy < minStat) 
+      if (Energy == minStat) 
       {
         Status = "Dojoadachi is tired.";
       }
 
-      else if (Happiness < minStat) 
+      else if (Happiness == minStat) 
       {
         Status = "Dojodachi is sad.";
       }
