@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="~/css/styles.css">
+  <title>Random Passcode</title>
+</head>
+<body>
+  <form asp-action="New" class="passcode__form">
+    <h3 class="passcode__title"> Random passcode (passcode #@ViewBag.Counter) </h3>
+    <input asp-for="Passcode" class="passcode__input" value=@ViewBag.Code>
+    <button>Generate</button>
+  </form>
+</body>
+</html>

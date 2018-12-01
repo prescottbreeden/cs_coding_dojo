@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 2rem;
+  text-align: center;
+}
+.passcode__form {
+  margin-top: 15rem;
+}
+
+.passcode__form > * {
+  display: block;
+  margin: 2rem auto;
+}
