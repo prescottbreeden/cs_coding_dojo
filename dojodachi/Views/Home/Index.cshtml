@@ -1,0 +1,13 @@
+﻿@model Dojodachi
+
+Meals: @Model.Meals
+Energy: @Model.Energy
+Fullness: @Model.Fullness
+Happiness: @Model.Happiness
+
+<Form method="post" action="/feed"> <button>Feed</button> </Form>
+<Form method="post" action="/play"> <button>Play</button> </Form>
+<Form method="post" action="/work"> <button>Work</button> </Form>
+<Form method="post" action="/sleep"> <button>Sleep</button> </Form>
+
+@ViewBag.Error
