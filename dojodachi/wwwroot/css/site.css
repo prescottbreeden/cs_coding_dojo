@@ -18,28 +18,18 @@ html {
     font-size: 62.5%;
     font-family: 'Sedgwick Ave', cursive;
 }
-
 body {
     font-size: 1.5rem;
     padding: 3rem;
-    /* background-color: #333; */
-    /* background-image: linear-gradient(
-            to bottom right, 
-            var(--primary-color) 0%,
-            var(--secondary-color) 90% 
-        ); */
-    /* color: white; */
     background-color: var(--red);
     min-height: 100vh;
 }
-
 .title {
     font-family: 'Kumar One Outline', cursive;
     text-align: center;
     font-size: 4.5rem;
     padding: 2rem;
 }
-
 .wrapper {
     padding: 2rem;
 }
@@ -48,15 +38,11 @@ body {
     justify-content: center;
     width: 75%;
     margin: 0 auto;
-    /* margin-top: 1rem; */
 }
-
 .stats {
     padding: 1rem;
     font-size: 3rem;
-    /* border: 2px dashed green; */
     background-color: var(--yellow);
-    /* color: var(--white); */
     width: 25%;
     display: flex;
     flex-direction: column;
@@ -66,7 +52,6 @@ body {
 }
 .dojodachi {
     padding: 1rem;
-    /* border: 2px dashed blue; */
     background-color: var(--yellow);
     width: 75%;
     height: 40rem;
@@ -74,20 +59,17 @@ body {
     position: relative;
     box-shadow: 1rem 0rem 0rem rgba(0,0,0, .5);
 }
-
 .dojodachi__img {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 .dojodachi__error {
     margin-top: 2rem;
     text-align: center;
     font-size: 4rem;
 }
-
 .ui {
     padding: 3rem 0;
     width: 75%;
@@ -97,7 +79,6 @@ body {
     background-color: var(--yellow);
     box-shadow: 1rem 1rem 0rem rgba(0,0,0, .5);
 }
-
 .button {
     display: inline-block;
     width: 20%;
@@ -109,14 +90,12 @@ body {
     border-radius: 4px;
     text-align: center;
 }
-
 .button--reset {
     display: block;
     background-color: var(--dark-blue);
     margin: 1rem auto;
     box-shadow: 1rem 1rem 0rem rgba(0,0,0, .5);
 }
-
 .button--win {
     display: block;
     background-color: green;
@@ -124,11 +103,9 @@ body {
     margin: 1rem auto;
     box-shadow: 1rem 1rem 0rem rgba(0,0,0, .5);
 }
-
 .button--reset:hover {
     background-color: var(--primary-color);
 }
-
 .ui a:hover {
     background-color: var(--secondary-color);
 }

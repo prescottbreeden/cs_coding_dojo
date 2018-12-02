@@ -18,18 +18,17 @@ namespace dojodachi.Models
 
     public Dojodachi()
     {
-       Happiness = 20;
-       Fullness = 20;
-       Energy = 50;
-       Meals = 3; 
-       IsDead = false;
-       Image = "~/images/dachi1.png";
-       Status = "Dojodachi is functioning within normal parameters.";
+      Happiness = 20;
+      Fullness = 20;
+      Energy = 50;
+      Meals = 3;
+      Image = "~/images/dachi1.png";
+      Status = "Dojodachi is functioning within normal parameters.";
     }
 
     public void Feed()
     {
-      if (!IsDead && Meals > 0 && !MegaDachi) 
+      if (!IsDead && Meals > 0 && !MegaDachi)
       {
         Random rand = new Random();
         Fullness += rand.Next(5, 10);
@@ -44,11 +43,11 @@ namespace dojodachi.Models
       if (!IsDead && !MegaDachi)
       {
         Random rand = new Random();
-        if (rand.Next(1,5)==1)
-        {
+
+        if (rand.Next(1, 5) == 1)
           Status = "Dojodachi doesn't want to play.";
-        }
-        else 
+
+        else
         {
           Happiness += rand.Next(5, 10);
           Energy -= 5;
@@ -86,14 +85,15 @@ namespace dojodachi.Models
     {
       if (Happiness <= 0 || Energy <= 0 || Fullness <= 0)
       {
-       Image = "~/images/death.png";
-       IsDead = true;
+        Image = "~/images/death.png";
+        IsDead = true;
       }
     }
 
     public void UpdateStatus()
     {
       IsFeeling();
+
       if (Fullness >= 100 && Energy >= 100 && Happiness >= 100)
         Win();
 
@@ -115,19 +115,13 @@ namespace dojodachi.Models
       int[] stats = { Fullness, Energy, Happiness };
       int minStat = (from s in stats select s).Min();
 
-      if (Energy == minStat) 
-      {
+      if (Energy == minStat)
         Status = "Dojoadachi is tired.";
-      }
 
-      else if (Happiness == minStat) 
-      {
+      else if (Happiness == minStat)
         Status = "Dojodachi is sad.";
-      }
 
       else Status = "Dojodachi is hungry.";
-
-      
     }
 
     public void Win()
