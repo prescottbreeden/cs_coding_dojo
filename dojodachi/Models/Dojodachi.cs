@@ -33,7 +33,7 @@ namespace dojodachi.Models
         Random rand = new Random();
         Fullness += rand.Next(5, 10);
         Meals--;
-        UpdateImage();
+        CheckIfDead();
         UpdateStatus();
       }
     }
@@ -51,7 +51,7 @@ namespace dojodachi.Models
         {
           Happiness += rand.Next(5, 10);
           Energy -= 5;
-          UpdateImage();
+          CheckIfDead();
           UpdateStatus();
         }
       }
@@ -64,7 +64,7 @@ namespace dojodachi.Models
         Random rand = new Random();
         Meals += rand.Next(1, 3);
         Energy -= 5;
-        UpdateImage();
+        CheckIfDead();
         UpdateStatus();
       }
     }
@@ -76,12 +76,12 @@ namespace dojodachi.Models
         Energy += 15;
         Fullness -= 5;
         Happiness -= 5;
-        UpdateImage();
+        CheckIfDead();
         UpdateStatus();
       }
     }
 
-    public void UpdateImage()
+    public void CheckIfDead()
     {
       if (Happiness <= 0 || Energy <= 0 || Fullness <= 0)
       {
@@ -92,22 +92,30 @@ namespace dojodachi.Models
 
     public void UpdateStatus()
     {
-      IsFeeling();
+      if (!IsDead)
+      {
+        IsFeeling();
 
-      if (Fullness >= 100 && Energy >= 100 && Happiness >= 100)
-        Win();
+        if (Meals <= 0)
+          Status = "You've run out of meals!";
 
-      else if (Fullness <= 0)
-        Status = "Dojodachi starved to death. This is why we can't have nice things.";
+        if (Fullness >= 100 && Energy >= 100 && Happiness >= 100)
+          Win();
+      }
+      else
+      {
+        if (Fullness <= 0 && Happiness <= 0)
+          Status = "Dojodachi died of depression and starvation. This is why we can't have nice things.";
 
-      else if (Energy <= 0)
-        Status = "Dojodachi died of exhaustion. This is why we can't have nice things.";
+        else if (Fullness <= 0)
+          Status = "Dojodachi starved to death. This is why we can't have nice things.";
 
-      else if (Happiness <= 0)
-        Status = "Dojodachi died from depression. This is why we can't have nice things.";
+        else if (Happiness <= 0)
+          Status = "Dojodachi died from depression. This is why we can't have nice things.";
 
-      else if (Meals <= 0)
-        Status = "You've run out of meals!";
+        else if (Energy <= 0)
+          Status = "Dojodachi died of exhaustion. This is why we can't have nice things.";
+      }
     }
 
     public void IsFeeling()

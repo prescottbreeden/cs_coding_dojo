@@ -66,7 +66,7 @@ namespace dojodachi.Controllers
     public Dojodachi GetDojodachi()
     {
       string dd = HttpContext.Session.GetString("dachi");
-      if (dd == null)
+      if (dd is null)
       {
         Dojodachi dojo = new Dojodachi();
         HttpContext.Session.SetString("dachi", JsonConvert.SerializeObject(dojo));
