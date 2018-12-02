@@ -8,42 +8,42 @@ using quoting_dojo.Models;
 
 namespace quoting_dojo.Models
 {
-  public static class AuthorFactory
+  public static class QuoteAPI
   {
-    public static List<Author> AllAuthors = new List<Author>();
+    public static List<Quote> AllQuotes = new List<Quote>();
     private static IDbConnection dbConnection = DbConnection.DatabaseConnection;
 
-    static AuthorFactory()
+    static QuoteAPI()
     {
       FindAll(); 
     }
     public static void FindAll()
     {
-      dbConnection.Open();
-      var authors = dbConnection.Query<Author>("Select * from authors");
-      foreach (Author auth in authors)
+      var quotes = dbConnection.Query<Quote>("Select * from quotes");
+      AllQuotes.Clear();
+      foreach (Quote quote in quotes)
       {
-        AllAuthors.Add(auth);
+        AllQuotes.Add(quote);
       }
     }
 
-    public static Author FindByID(int id)
+    public static Quote FindByID(int id)
     {
-      dbConnection.Open();
-      return dbConnection.Query<Author>(
+      return dbConnection.Query<Quote>(
           @"
             SELECT * 
-              FROM authors 
+              FROM quotes 
               WHERE id = @Id
           ", 
         new { Id = id}).FirstOrDefault();
     }
 
-    public static void Add(Author item)
+    public static void Add(Quote item)
     {
+      AllQuotes.Add(item);
       string query = @"
-      INSERT INTO authors (name, quote, created_at, updated_at)
-      VALUES (@Name, @Quote, NOW(), NOW())";
+        INSERT INTO quotes (content, author, created_at, updated_at)
+        VALUES (@Quote, @Author, NOW(), NOW())";
       dbConnection.Open();
       dbConnection.Execute(query, item);
     }

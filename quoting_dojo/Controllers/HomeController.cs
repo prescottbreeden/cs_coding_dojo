@@ -10,9 +10,10 @@ namespace quoting_dojo.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet("")]
         public IActionResult Index()
         {
-            AuthorFactory.FindAll();
+            QuoteAPI.FindAll();
             return View();
         }
 
