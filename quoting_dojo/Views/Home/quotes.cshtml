@@ -1,0 +1,7 @@
+@{
+  foreach (Quote quote in QuoteAPI.AllQuotes)
+  {
+    <p>@quote.Author</p>
+    <p>@quote.Content</p>
+  }
+}
