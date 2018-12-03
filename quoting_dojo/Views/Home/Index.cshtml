@@ -1,8 +1,10 @@
-﻿
-@{
-  foreach (Quote quote in @ViewBag.AllQuotes)
-  {
-    <p>@quote.Author</p>
-    <p>@quote.Content</p>
-  }
-}
+﻿<form asp-action="NewQuote" class="form">
+  <div class="form__row">
+    <label asp-for="Name" class="form__label_">Name:</label>
+    <input asp-for="Name" class="form__input">
+  </div>
+  <div class="form__row">
+    <label asp-for="Quote" class="form__label_">Quote</label>
+    <textarea asp-for="Quote" class="form__textarea" cols="30" rows="10"></textarea>
+  </div>
+</form>

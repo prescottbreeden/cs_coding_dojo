@@ -1,0 +1,7 @@
+@{
+  foreach (Quote quote in ViewBag.AllQuotes)
+  {
+    <p>@quote.Author</p>
+    <p>@quote.Content</p>
+  }
+}
