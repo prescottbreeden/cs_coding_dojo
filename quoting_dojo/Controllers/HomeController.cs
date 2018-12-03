@@ -10,10 +10,17 @@ namespace quoting_dojo.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly QuoteFactory _quoteFactory;
+        public HomeController(QuoteFactory qFactory)
+        {
+            _quoteFactory = qFactory;
+        }
+
         [HttpGet("")]
         public IActionResult Index()
         {
-            QuoteAPI.FindAll();
+            _quoteFactory.FindAll();
+            ViewBag.AllQuotes = _quoteFactory.AllQuotes;
             return View();
         }
 

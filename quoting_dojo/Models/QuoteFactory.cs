@@ -2,22 +2,30 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
+using Microsoft.Extensions.Options;
 using MySql.Data.MySqlClient;
-using quoting_dojo.DbConfig;
 using quoting_dojo.Models;
 
 namespace quoting_dojo.Models
 {
-  public static class QuoteAPI
+  public class QuoteFactory
   {
-    public static List<Quote> AllQuotes = new List<Quote>();
-    private static IDbConnection dbConnection = DbConnection.DatabaseConnection;
+    private MySqlOptions _options;
+    internal IDbConnection dbConnection
+    { 
+      get {
+        return new MySqlConnection(_options.ConnectionString);
+      } 
+    }
+    public List<Quote> AllQuotes = new List<Quote>();
 
-    static QuoteAPI()
+    public QuoteFactory(IOptions<MySqlOptions> config)
     {
+      _options = config.Value;
       FindAll(); 
     }
-    public static void FindAll()
+
+    public void FindAll()
     {
       var quotes = dbConnection.Query<Quote>("Select * from quotes");
       AllQuotes.Clear();
@@ -27,7 +35,7 @@ namespace quoting_dojo.Models
       }
     }
 
-    public static Quote FindByID(int id)
+    public Quote FindByID(int id)
     {
       return dbConnection.Query<Quote>(
           @"
@@ -38,7 +46,7 @@ namespace quoting_dojo.Models
         new { Id = id}).FirstOrDefault();
     }
 
-    public static void Add(Quote item)
+    public void Add(Quote item)
     {
       AllQuotes.Add(item);
       string query = @"

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using quoting_dojo.Models;
 
 namespace quoting_dojo
 {
@@ -32,6 +33,8 @@ namespace quoting_dojo
             });
 
 
+            services.Configure<MySqlOptions>(Configuration.GetSection("DBInfo"));;
+            services.AddScoped<QuoteFactory>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
