@@ -1,0 +1,18 @@
+@model Quote
+<h2 class="title">Add New Quote</h2>
+<form 
+  asp-action="NewQuote" 
+  asp-controller="Home"
+  method="POST"
+  class="form">
+
+  <span asp-validation-for="Content" class="form__validation"></span>
+  <div class="form__row">
+    <label asp-for="Content" class="form__label">Content:</label>
+    <textarea asp-for="Content" cols="30" rows="10"></textarea>
+
+    <!-- <label asp-for="Author">Author:</label> -->
+  </div>
+  <button>Submit</button>
+
+</form>

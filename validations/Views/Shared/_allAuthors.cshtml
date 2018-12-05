@@ -1,0 +1,12 @@
+@model Author
+<h2 class="title">All Authors</h2>
+<div class="users">
+  @{
+    foreach (Author author in AuthorFactory.AllAuthors)
+    {
+      <div class="users__row">
+        <p>@author.Name</p>
+      </div>
+    }
+  }
+</div>

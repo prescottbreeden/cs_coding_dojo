@@ -1,0 +1,17 @@
+@model Author
+
+<h2 class="title">Add New Author</h2>
+<form 
+  asp-action="NewAuthor" 
+  asp-controller="Home"
+  method="POST"
+  class="form">
+
+  <span asp-validation-for="Name" class="form__validation"></span>
+  <div class="form__row">
+    <label asp-for="Name" class="form__label">Name:</label>
+    <input asp-for="Name" class="form__input">
+  </div>
+  <button>Submit</button>
+
+</form>

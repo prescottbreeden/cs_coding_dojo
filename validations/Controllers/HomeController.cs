@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using validations.Models;
+using validations.Factory;
 
 namespace validations.Controllers
 {
@@ -15,34 +16,17 @@ namespace validations.Controllers
         [Route("")]
         public IActionResult Index()
         {
-
-            int? counter = HttpContext.Session.GetInt32("Counter");
-            if(counter == null) 
-            {
-               counter = 1;
-               HttpContext.Session.SetInt32("Counter", (int)counter);
-            }
-            else
-            {
-                ++counter;
-                HttpContext.Session.SetInt32("Counter", (int)counter);
-            }
-
-            HttpContext.Session.SetString("Name", "Bob");
-            string userName = HttpContext.Session.GetString("Name");
-            ViewBag.Name = userName;
-            ViewBag.Counter = counter;
-
+            ViewBag.all_quotes = QuoteFactory.FindAll();
             return View();
         }
 
         [HttpPost]
-        [Route("/process")]
-        public IActionResult CreateNew(User user)
+        [Route("/add_author")]
+        public IActionResult NewAuthor(Author author)
         {
             if(ModelState.IsValid)
             {
-                User newUser = UserFactory.NewUser(user);
+                AuthorFactory.NewAuthor(author);
                 return RedirectToAction("Index");
             }
             else
@@ -51,16 +35,19 @@ namespace validations.Controllers
             }
         }
 
-        public IActionResult Contact()
+        [HttpPost]
+        [Route("/add_quote")]
+        public IActionResult NewQuote(Quote quote)
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            if(ModelState.IsValid)
+            {
+                QuoteFactory.NewQuote(quote);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Index");
+            }
         }
     }
 }

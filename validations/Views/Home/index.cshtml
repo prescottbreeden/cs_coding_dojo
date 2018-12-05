@@ -1,48 +1,9 @@
-@model User
-<p>Welcome @ViewBag.Name</p>
-<h2 class="title">Create New User</h2>
-<p>Times reloaded: @ViewBag.Counter</p>
-<form 
-  asp-action="CreateNew" 
-  asp-controller="Home"
-  class="form" 
-  method="post">
-
-  <span asp-validation-for="Name" class="form__validation"></span>
-  <div class="form__row">
-    <label asp-for="Name" class="form__label">Name:</label>
-    <input asp-for="Name" class="form__input">
-  </div>
-  <span asp-validation-for="Email" class="form__validation"></span>
-  <div class="form__row">
-    <label asp-for="Email" class="form__label">Email:</label>
-    <input type="email" asp-for="Email" class="form__input">
-  </div>
-  <span asp-validation-for="Birthdate" class="form__validation"></span>
-  <div class="form__row">
-    <label asp-for="Birthdate" class="form__label">Birthdate:</label>
-    <input asp-for="Birthdate" type="Date" class="form__birthday">
-  </div>
-  <span asp-validation-for="Comment" class="form__validation"></span>
-  <div class="form__row">
-    <label asp-for="Comment" class="form__label">Comment:</label>
-    <textarea asp-for="Comment" class="form__textarea" rows="10"></textarea>
-  </div>
-  <button>Submit</button>
-
-</form>
-
-<h2 class="title">All Users</h2>
-<div class="users">
-  @{
-    foreach (User user in UserFactory.AllUsers)
-    {
-      <div class="users__row">
-        <p>@user.Name</p>
-        <p>@user.Email</p>
-        <p>@user.Birthdate.Value.ToString("MMM d, yyyy")</p>
-        <p>@user.Comment</p>
-      </div>
-    }
+@{
+  foreach (Quote quote in @ViewBag.all_quotes)
+  {
+    <div class="users__row">
+      <p>@quote.Content</p>
+      <p>@quote.author.Name</p>
+    </div>
   }
-</div>
+}

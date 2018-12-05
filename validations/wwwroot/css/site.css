@@ -26,7 +26,6 @@ body {
     margin: 1rem;
 }
 
-
 .form__textarea {
     width: 50%;
 }
@@ -41,7 +40,7 @@ body {
 .users__row {
     margin: 1rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .users__row p {
