@@ -1,0 +1,39 @@
+﻿@model Trail
+
+<h1>Lost in the Woods</h1>
+
+<h2>Add Trail</h2>
+<form asp-action="NewTrail" asp-controller="Home" method="POST">
+  <label asp-for="Name"></label>
+  <input asp-for="Name">
+
+  <label asp-for="Description"></label>
+  <input asp-for="Description">
+
+  <label asp-for="Length"></label>
+  <input asp-for="Length">
+
+  <label asp-for="Elevation"></label>
+  <input asp-for="Elevation">
+
+  <label asp-for="Latitude"></label>
+  <input asp-for="Latitude">
+
+  <label asp-for="Longitude"></label>
+  <input asp-for="Longitude">
+  <button>Submit</button>
+</form>
+<div class="trails">
+  Trails
+  <hr>
+</div>
+
+@{
+  foreach (Trail trail in @ViewBag.alltrails)
+  {
+    <p>@trail.Name</p>
+    <p>@trail.Elevation</p>
+    <p>@trail.Length</p>
+    <hr>
+  }
+}

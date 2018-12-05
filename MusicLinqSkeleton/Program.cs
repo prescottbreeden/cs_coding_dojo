@@ -28,6 +28,7 @@ namespace ConsoleApplication
             System.Console.WriteLine(artist.FirstOrDefault().ArtistName + " is " + youngest + " years old.");
 
             //Display all artists with 'William' somewhere in their real name
+            // var williams = Artists.All(a => a.RealName.Contains("") )
 
             //Display the 3 oldest artist from Atlanta
 

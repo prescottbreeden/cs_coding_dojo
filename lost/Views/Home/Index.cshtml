@@ -1,0 +1,34 @@
+﻿@model Trail
+
+<form asp-action="NewTrail" asp-controller="Home" method="POST">
+  <label asp-for="Name">Name:</label>
+  <input asp-for="Name">
+
+  <label asp-for="Description">Desc:</label>
+  <input asp-for="Description">
+
+  <label asp-for="Length">Length:</label>
+  <input asp-for="Length">
+
+  <label asp-for="Elevation">Elevation:</label>
+  <input asp-for="Elevation">
+
+  <label asp-for="Latitude">Latitude:</label>
+  <input asp-for="Latitude">
+
+  <label asp-for="Longitude">Longitude:</label>
+  <input asp-for="Longitude">
+  <button>Submit</button>
+</form>
+
+@{
+    foreach(Trail trail in @ViewBag.all_trails)
+    {
+        <p>@trail.Name</p>
+        <p>@trail.Description</p>
+        <p>@trail.Length</p>
+        <p>@trail.Elevation</p>
+        <p>@trail.Latitude</p>
+        <p>@trail.Longitude</p>
+    }
+}
