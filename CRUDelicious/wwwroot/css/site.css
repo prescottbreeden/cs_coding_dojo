@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  background-color: #333;
+  color: white;
+}
+
+body {
+  font-size: 2rem;
+  padding: 3rem;
+}
+.u-border-bottom {
+  border-bottom: 2px solid steelblue;
+  margin-bottom: 2rem;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form {
+  color: black;
+  width: 30%;
+  background-color: tan;
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0rem 1rem 2rem rgba(0,0,0,.3);
+}
+
+.form__row {
+  display: flex;
+  justify-content: space-between;
+  line-height: 3rem;
+}
+
+.form__row > * {
+  margin: 1rem 0rem;
+}
+
+.form input {
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  overflow: auto;
+  box-shadow: none;
+}
+.form textarea {
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  overflow: auto;
+  box-shadow: none;
+}
+
+.form button {
+  width: 100%;
+  background-color: steelblue;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+  box-shadow: 0rem 1rem 2rem rgba(0,0,0,.3);
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.form button:hover {
+  background-color: green;
+  cursor: pointer;
+}
+
+.dishes {
+  color: black;
+  background-color: tan;
+  width: 60%;
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0rem 1rem 2rem rgba(0,0,0,.3);
+}
+
+.dishes__row {
+  display: flex;
+  justify-content: space-between;
+}

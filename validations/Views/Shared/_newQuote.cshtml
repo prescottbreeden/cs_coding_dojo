@@ -11,7 +11,11 @@
     <label asp-for="Content" class="form__label">Content:</label>
     <textarea asp-for="Content" cols="30" rows="10"></textarea>
 
-    <!-- <label asp-for="Author">Author:</label> -->
+    <label asp-for="author">Author:</label>
+    <select asp-for="author">
+      asp-items="@(new SelectList(AuthorFactory.AllAuthors, "author_id", "Name"))">
+      <option>Please select one</option>
+    </select>
   </div>
   <button>Submit</button>
 

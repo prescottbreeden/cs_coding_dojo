@@ -28,9 +28,18 @@ namespace ConsoleApplication
             System.Console.WriteLine(artist.FirstOrDefault().ArtistName + " is " + youngest + " years old.");
 
             //Display all artists with 'William' somewhere in their real name
-            // var williams = Artists.All(a => a.RealName.Contains("") )
+            IEnumerable<Artist> williams = Artists.Where(a => a.RealName.Contains("William"));
+            foreach (Artist x in williams) 
+            {
+                System.Console.WriteLine(x.RealName);
+            }
 
             //Display the 3 oldest artist from Atlanta
+            IEnumerable<Artist> old = Artists.Where(a => a.Hometown == "Atlanta").OrderBy(a => a.Age).Take(3);
+            foreach (Artist x in old)
+            {
+                System.Console.WriteLine(x);
+            }
 
             //(Optional) Display the Group Name of all groups that have members that are not from New York City
 

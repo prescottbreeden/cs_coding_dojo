@@ -1,0 +1,56 @@
+@model Dish
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form 
+  asp-action="NewDish" 
+  asp-controller="Food"
+  method="POST"
+  class="form">
+
+  <span asp-validation-for="description" class="form__validation"></span>
+  <div class="form__row">
+    <label asp-for="name">Name:</label>
+    <input asp-for="name">
+  </div>
+
+  <div class="form__row">
+    <label asp-for="chef">Chef:</label>
+    <input asp-for="chef">
+  </div>
+
+  <div class="form__row">
+    <label asp-for="tastiness">Tasitness:</label>
+    <input asp-for="tastiness">
+  </div>
+
+  <div class="form__row">
+    <label asp-for="calories">Calories:</label>
+    <input asp-for="calories">
+  </div>
+
+  <div class="form__row">
+    <label asp-for="description" class="form__label">Description:</label>
+    <textarea asp-for="description" cols="36" rows="3"></textarea>
+  </div>
+
+  <button>Submit</button>
+
+</form>
+
+<div class="dishes">
+    <div class="dishes__row u-border-bottom">
+        <p>Name</p>
+        <p>Chef</p>
+        <p>Description</p>
+    </div>
+    @foreach(Dish dish in @ViewBag.all_dishes)
+    {
+    <div class="dishes__row">
+        <p>@dish.name</p>
+        <p>@dish.chef</p>
+        <p>@dish.description</p>
+    </div>
+    }
+</div>
