@@ -11,7 +11,13 @@ namespace wedding_planner.Models
     public WeddingDb(DbContextOptions<WeddingDb> options) : base(options) { }
     public DbSet<User> users { get; set; }
     public DbSet<Wedding> weddings { get; set; }
+    public DbSet<Address> addresses { get; set; }
     public DbSet<Guest> guests { get; set; }
+
+
+    // ============================== //
+    //          USER API
+    // ============================== //
 
     public List<User> GetAllUsers()
     {
@@ -66,44 +72,77 @@ namespace wedding_planner.Models
       SaveChanges();
     }
 
-    public void DeleteUser(WeddingDb dbContext, int id)
+    public void DeleteUser(int id)
     {
-      User removeThis = dbContext.users.SingleOrDefault(u => u.user_id == id);
-      dbContext.users.Remove(removeThis);
-      dbContext.SaveChanges();
+      User removeThis = users.SingleOrDefault(u => u.user_id == id);
+      users.Remove(removeThis);
+      SaveChanges();
     }
 
-    public List<Wedding> GetAllWeddings(WeddingDb dbContext)
+
+    // ============================== //
+    //          WEDDING API
+    // ============================== //
+
+    public List<Wedding> GetAllWeddings()
     {
-      return dbContext.weddings.ToList();
+      return weddings.ToList();
     }
 
-    public Wedding GetOneWedding(WeddingDb dbContext, int id)
+    public Wedding GetOneWedding(int id)
     {
-      return dbContext.weddings.FirstOrDefault(w => w.wedding_id == id);
+      return weddings.FirstOrDefault(w => w.wedding_id == id);
     }
 
-    public void CreateNewWedding(WeddingDb dbContext, Wedding newWedding)
+    public void DeleteWedding(int id)
     {
-      dbContext.Add(newWedding);
-      dbContext.SaveChanges();
+      Wedding removeThis = weddings.SingleOrDefault(w => w.wedding_id == id);
+      weddings.Remove(removeThis);
+      SaveChanges();
     }
 
-    public void UpdateWedding(WeddingDb dbContext, Wedding wedding)
+    public void CreateNewWedding(NewWedding newWedding)
     {
-      Wedding current = GetOneWedding(dbContext, wedding.wedding_id);
+      Address address = new Address();
+      address.street = newWedding.Street;
+      address.city = newWedding.City;
+      address.state = newWedding.State;
+      address.zip_code = newWedding.Zip;
+      CreateNewAddress(address);
+      SaveChanges();
+
+      Wedding wedding = new Wedding();
+      wedding.address_id = address.address_id;
+      wedding.user_id = newWedding.UserId;
+      wedding.wedder_one = newWedding.WedderOne;
+      wedding.wedder_two = newWedding.WedderTwo;
+      wedding.wedding_date = newWedding.Date;
+
+      weddings.Add(wedding);
+      SaveChanges();
+    }
+
+    public void UpdateWedding(Wedding wedding)
+    {
+      Wedding current = GetOneWedding(wedding.wedding_id);
       current.wedder_one = wedding.wedder_one;
       current.wedder_two = wedding.wedder_two;
       current.wedding_date = wedding.wedding_date;
       current.updated_at = DateTime.Now;
-      dbContext.SaveChanges();
+      SaveChanges();
     }
 
-    public void DeleteWedding(WeddingDb dbContext, int id)
+
+    // ============================== //
+    //          ADDRESS API
+    // ============================== //
+
+    public void CreateNewAddress(Address address)
     {
-      Wedding removeThis = dbContext.weddings.SingleOrDefault(w => w.wedding_id == id);
-      dbContext.weddings.Remove(removeThis);
-      dbContext.SaveChanges();
+      System.Console.WriteLine("...... Inside Create Address ........");
+      System.Console.WriteLine(address.address_id);
+      addresses.Add(address);
+      SaveChanges();
     }
   }
 

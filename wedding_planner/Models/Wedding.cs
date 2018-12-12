@@ -10,6 +10,8 @@ namespace wedding_planner
     [Required]
     public int user_id { get; set; }
     [Required]
+    public int address_id { get; set; }
+    [Required]
     public string wedder_one { get; set; }
     [Required]
     public string wedder_two { get; set; }

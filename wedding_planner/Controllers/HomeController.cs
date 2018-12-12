@@ -61,17 +61,35 @@ namespace wedding_planner.Controllers
         {
             int? id = HttpContext.Session.GetInt32("user_id");
             if (id is null) return RedirectToAction("Index"); 
-            List<User> Model = dbContext.GetAllUsers();
+            List<Wedding> Model = dbContext.GetAllWeddings();
             return View(Model);
         }
 
-        [HttpGet("/create_wedding")]
+        [HttpGet("/new")]
         public IActionResult CreateWedding()
         {
             int? id = HttpContext.Session.GetInt32("user_id");
             if (id is null) return RedirectToAction("Index"); 
+            ViewBag.userId = id;
             return View();
+        }
 
+        [HttpPost("/process")]
+        public IActionResult ProccessWedding(NewWedding wedding)
+        {
+            int? id = HttpContext.Session.GetInt32("user_id");
+            if (id is null) return RedirectToAction("Index"); 
+
+            if(ModelState.IsValid)
+            {
+                dbContext.CreateNewWedding(wedding);
+                return RedirectToAction("Dashboard");
+            }
+            else 
+            {
+                ViewBag.userId = id;
+                return View("CreateWedding");
+            }
         }
     }
 }

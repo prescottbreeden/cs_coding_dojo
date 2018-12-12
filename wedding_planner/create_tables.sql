@@ -17,9 +17,18 @@ CREATE TABLE IF NOT EXISTS users (
   updated_at      DATETIME      NOT NULL  DEFAULT NOW() ON UPDATE NOW()
 );
 
+CREATE TABLE IF NOT EXISTS addresses (
+  address_id      INTEGER       NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  street          VARCHAR(255)  NOT NULL,
+  city            VARCHAR(50)   NOT NULL,
+  state           VARCHAR(3)    NOT NULL,
+  zip_code        INTEGER(11)   NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS weddings (
   wedding_id      INTEGER       NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id         INTEGER       NOT NULL,
+  address_id      INTEGER       NOT NULL,
   wedder_one      VARCHAR(50)   NOT NULL,
   wedder_two      VARCHAR(50)   NOT NULL,
   wedding_date    DATETIME      NOT NULL,
@@ -27,7 +36,9 @@ CREATE TABLE IF NOT EXISTS weddings (
   updated_at      DATETIME      NOT NULL  DEFAULT NOW() ON UPDATE NOW(),
 
   FOREIGN KEY (user_id)
-    REFERENCES users(user_id)
+    REFERENCES users(user_id),
+  FOREIGN KEY (address_id)
+    REFERENCES addresses(address_id)
 );
 
 CREATE TABLE IF NOT EXISTS guests (
