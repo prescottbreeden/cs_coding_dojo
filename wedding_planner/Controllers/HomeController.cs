@@ -44,7 +44,8 @@ namespace wedding_planner.Controllers
                 if(result == "Success")
                 {
                     var currentUser = dbContext.GetOneUser(user.LogEmail);
-                    HttpContext.Session.SetInt32("user_id", currentUser.user_id);
+                    HttpContext.Session.SetInt32("user_id", 
+                        currentUser.user_id);
                     return RedirectToAction("Dashboard");
                 }
                 return View("Index");
@@ -62,6 +63,15 @@ namespace wedding_planner.Controllers
             if (id is null) return RedirectToAction("Index"); 
             List<User> Model = dbContext.GetAllUsers();
             return View(Model);
+        }
+
+        [HttpGet("/create_wedding")]
+        public IActionResult CreateWedding()
+        {
+            int? id = HttpContext.Session.GetInt32("user_id");
+            if (id is null) return RedirectToAction("Index"); 
+            return View();
+
         }
     }
 }

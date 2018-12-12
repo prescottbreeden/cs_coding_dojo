@@ -2,4 +2,9 @@
     ViewData["Title"] = "Dashboard";
 }
 <h1>Welcome to Wedding Planner</h1>
-<partial name="_allUsers" />
+<div class="dashboard__container">
+    <partial name="_allWeddings" />
+    <a 
+        class="dashboard__btn"
+        href="/create_wedding">New Wedding</a>
+</div>

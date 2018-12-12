@@ -49,3 +49,24 @@ h1 {
 .all-users__row {
   margin: 1rem;
 }
+
+.dashboard__container {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid #333;
+}
+
+.dashboard__btn {
+  margin-top: 4rem;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  background-color: steelblue;
+  color: white;
+  float: right;
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.3);
+  transition: all .2s;
+}
+
+.dashboard__btn:hover {
+  background-color: green;
+}
