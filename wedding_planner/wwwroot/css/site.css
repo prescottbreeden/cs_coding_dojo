@@ -1,3 +1,13 @@
+:root {
+  --white: #eee;
+  --black: #333;
+  --primary: #6C5B7B;
+  --blue: #355C7D; 
+  --peach: #F8BCA6;
+  --pink: #F68381;
+
+  --bradius: 5px;
+}
 * {
   margin: 0;
   padding: 0;
@@ -5,15 +15,65 @@
 
 html {
   font-size: 62.5%;
+  font-family: 'Playfair Display', serif;
+  box-sizing: border-box;
 }
 
 body {
   font-size: 2rem;
   padding: 3rem;
+  background-color: var(--peach);
 }
 
 h1 {
   text-align: center;
+}
+
+.header {
+  padding: 4rem 8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--primary);
+  background-color: var(--pink);
+  border-radius: var(--bradius);
+  margin-bottom: 3rem;
+  position: relative;
+}
+.header__stitch {
+  position: absolute;
+  top: 5%;
+  left: 1%;
+  /* transform: translate(-50%, -50%); */
+  height: 85%;
+  width: 97.25%;
+  border: 3px dashed var(--white);
+  border-radius: var(--bradius);
+}
+.header__title {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+}
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+}
+.nav__link {
+  min-width: 20%;
+  text-decoration: none;
+  border: 1px solid var(--primary);
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 5px;
+  color: var(--primary);
+  transition: all .3s;
+}
+.nav__link:hover {
+  background-color: var(--primary);
+  color: var(--white);
 }
 
 .u-container {
@@ -21,7 +81,7 @@ h1 {
   width: 80%;
   margin: 0 auto;
   justify-content: space-around;
-  margin-top: 3rem;
+  padding-top: 3rem;
 }
 
 .form > * {
@@ -37,7 +97,7 @@ h1 {
   /* display: block; */
   /* text-align: center; */
   margin: 0 auto;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--black);
   text-transform: uppercase;
 }
 
@@ -50,7 +110,7 @@ h1 {
 }
 
 .all-users {
-  border-top: 1px solid #333;
+  border-top: 1px solid var(--black);
   margin-top: 3rem;
   text-align: center;
 }
@@ -61,7 +121,7 @@ h1 {
 .dashboard__container {
   width: 80%;
   margin: 0 auto;
-  border: 1px solid #333;
+  border: 1px solid var(--black);
 }
 
 .dashboard__row {
@@ -89,7 +149,7 @@ h1 {
   width: 30%;
   margin: 0 auto;
   margin-top: 3rem;
-  border: 1px solid #333;
+  border: 1px solid var(--black);
   box-shadow: 0 1rem 2rem rgba(0,0,0,.3);
   /* background-color: lightcoral; */
 }
