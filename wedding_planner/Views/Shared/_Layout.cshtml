@@ -9,22 +9,26 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header class="header">
-        <h1 class="header__title">Wedding Planner</h1>
-        <nav class="nav">
-            <a href="" class="nav__link">Dashboard</a>
-            <a href="" class="nav__link">Profile</a>
-            <a href="" class="nav__link">Logout</a>
-        </nav>
-        <div class="header__stitch"> </div>
-    </header>
-    <div class="container body-content">
-        @RenderBody()
-    </div>
+    <div class="body__stitch">
+
+        <header class="header">
+            <div class="header__stitch"> 
+                <h1 class="header__title">Wedding Planner</h1>
+                <nav class="nav">
+                    <a href="/dashboard" class="nav__link">Dashboard</a>
+                    <a href="/yourprofile" class="nav__link">Profile</a>
+                    <a href="/logout" class="nav__link">Logout</a>
+                </nav>
+            </div>
+        </header>
+        <div class="container body-content">
+            @RenderBody()
+        </div>
         
         
         <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("scripts", required: false)
+    </div>
 </body>
 </html>

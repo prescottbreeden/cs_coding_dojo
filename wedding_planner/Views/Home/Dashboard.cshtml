@@ -2,22 +2,26 @@
 @{
     ViewData["Title"] = "Dashboard";
 }
-<h4>Welcome to Wedding Planner</h4>
+<h4 class="dashboard__title">all upcoming weddings</h4>
 <div class="dashboard__container">
-    <div class="weddings__list">
+    <div class="dashboard__list">
     @{
         foreach(Wedding wedding in @Model)
         {
-            <div class="dashboard__row">
-                <p>@wedding.wedder_one & @wedding.wedder_two</p>
-                <p>@wedding.wedding_date</p>
-                <p>Guest #</p>
-                <p>Actions</p>
-            </div>
+            <a href="/wedding/@wedding.wedding_id" class="dashboard__link">
+                <div class="dashboard__row">
+                    <div class="dashboard__wedders">
+                        <p class="dashboard__item">@wedding.wedder_one & @wedding.wedder_two</p>
+                    </div>
+                    <p class="dashboard__item">@wedding.wedding_date.ToLongDateString()</p>
+                    <p class="dashboard__item">Guest #</p>
+                    <p class="dashboard__item">Actions</p>
+                </div>
+            </a>
         }
     }
     </div>
     <a 
         class="dashboard__btn"
-        href="/new">New Wedding</a>
+        href="/new">Create New Wedding</a>
 </div>

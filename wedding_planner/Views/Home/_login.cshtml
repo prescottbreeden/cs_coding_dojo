@@ -2,9 +2,8 @@
 @model LoginUser
 
 <div class="login">
-  <h2>Log in</h2>
-  <p>Moose bites can be pretti nasti</p>
-  <form asp-action="Login" asp-controller="Home" class="form">
+  <form asp-action="ProccessLogin" asp-controller="Home" class="form">
+    <h4>Welcome Back!</h4>
     <div class="form__row">
       <label asp-for="LogEmail" class="form__label">Email:</label>
       <input asp-for="LogEmail" class="form__input">
@@ -13,7 +12,8 @@
       <label asp-for="LogPassword" class="form__label">Password:</label>
       <input asp-for="LogPassword" class="form__input">
     </div>
-    <button>Submit</button>
+    <button>Log in!</button>
+    <a href="/">Moose bites can be pretti nasti</a>
   </form>
   <div class="errors">
     <span asp-validation-for="LogEmail"></span>

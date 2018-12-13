@@ -20,6 +20,11 @@ namespace wedding_planner.Controllers
         {
             return View();
         }
+        [HttpGet("/login")]
+        public IActionResult Login()
+        {
+            return View();
+        }
 
         [HttpPost("/register")]
         public IActionResult Register(User user)
@@ -35,8 +40,8 @@ namespace wedding_planner.Controllers
             }
         }
 
-        [HttpPost("/login")]
-        public IActionResult Login(LoginUser user)
+        [HttpPost("/proccesslogin")]
+        public IActionResult ProccessLogin(LoginUser user)
         {
             if(ModelState.IsValid)
             {
@@ -54,6 +59,13 @@ namespace wedding_planner.Controllers
             {
                 return View("Index");
             }
+        }
+
+        [HttpGet("/logout")]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index");
         }
 
         [HttpGet("/dashboard")]

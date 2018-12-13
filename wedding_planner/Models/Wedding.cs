@@ -16,6 +16,7 @@ namespace wedding_planner
     [Required]
     public string wedder_two { get; set; }
     [Required]
+    [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
     public DateTime wedding_date { get; set; }
     public DateTime created_at { get; set; } = DateTime.Now;
     public DateTime updated_at { get; set; } = DateTime.Now;
