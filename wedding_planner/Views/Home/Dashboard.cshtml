@@ -2,26 +2,36 @@
 @{
     ViewData["Title"] = "Dashboard";
 }
-<h4 class="dashboard__title">all upcoming weddings</h4>
 <div class="dashboard__container">
-    <div class="dashboard__list">
-    @{
-        foreach(Wedding wedding in @Model)
-        {
-            <a href="/wedding/@wedding.wedding_id" class="dashboard__link">
-                <div class="dashboard__row">
-                    <div class="dashboard__wedders">
-                        <p class="dashboard__item">@wedding.wedder_one & @wedding.wedder_two</p>
-                    </div>
-                    <p class="dashboard__item">@wedding.wedding_date.ToLongDateString()</p>
-                    <p class="dashboard__item">Guest #</p>
-                    <p class="dashboard__item">Actions</p>
-                </div>
-            </a>
-        }
-    }
-    </div>
+    <h4 class="dashboard__title">all upcoming weddings</h4>
     <a 
         class="dashboard__btn"
         href="/new">Create New Wedding</a>
+    <div class="dashboard__list">
+        <div class="dashboard__row">
+            <div class="dashobard__wedders">
+                <div class="dashboard__item">Names</div>
+            </div>
+            <div class="dashboard__item">Date</div>
+            <div class="dashboard__item">Num Guests</div>
+            <div class="dashboard__item">Actions</div>
+        </div>
+    @{
+        foreach(Wedding wedding in @Model)
+        {
+                <div class="dashboard__row">
+                    <div class="dashboard__wedders">
+                        <div class="dashboard__item">@wedding.wedder_one & @wedding.wedder_two</div>
+                    </div>
+                    <div class="dashboard__item">@wedding.wedding_date.ToLongDateString()</div>
+                    <div class="dashboard__item">0</div>
+                    <div class="dashboard__item">
+                        <a href="/rsvp" class="dashboard__link">RSVP</a>
+                        <a href="/wedding/@wedding.wedding_id" class="dashboard__link">View</a>
+                        <a href="/delete/wedding/@wedding.wedding_id" class="dashboard__link">delete</a>
+                    </div>
+                </div>
+        }
+    }
+    </div>
 </div>

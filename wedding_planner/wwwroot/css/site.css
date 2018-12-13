@@ -193,23 +193,31 @@ button:hover {
   box-sizing: border-box;
   width: 100%;
   margin: 0 auto;
+  /* margin-bottom: 3rem; */
+  background-color: var(--light-purple);
+  padding: 1rem 3rem;
+  padding-bottom: 8rem;
+  border-radius: var(--bradius);
 }
 .dashboard__title {
   text-align: center;
   text-transform: uppercase;
   margin-bottom: 1rem;
+  color: var(--white);
 }
 .dashboard__list {
-  background-image: var(--gradient);
+  box-sizing: border-box;
+  background-image: var(--light-purple);
   min-height: 20rem;
   padding: 3rem;
   box-shadow: var(--boxshadow);
 }
 .dashboard__wedders {
-  width: 30%;
+  min-width: 40%;
 }
 .dashboard__row {
   display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
   margin-bottom: 1rem;
   border-bottom: 1px solid var(--black);
@@ -227,13 +235,12 @@ button:hover {
 }
 
 .dashboard__btn {
-  margin-top: 4rem;
+  box-sizing: border-box;
   text-decoration: none;
   padding: 1rem 3rem;
   background-color: var(--purple);
   color: var(--white);
-  float: right;
-  box-shadow: var(--boxshadow);
+  text-align: right;
   transition: all .2s;
   border-radius: var(--bradius);
 }
