@@ -12,9 +12,11 @@
             <div class="dashobard__wedders">
                 <div class="dashboard__item">Names</div>
             </div>
-            <div class="dashboard__item">Date</div>
-            <div class="dashboard__item">Num Guests</div>
-            <div class="dashboard__item">Actions</div>
+            <div class="dashboard__item">
+                <span class="dashboard__date">Date</span>
+                <span class="dashboard__guest">Guests</span>
+                <span class="dashboard__actions">Actions</span>
+            </div>
         </div>
     @{
         foreach(Wedding wedding in @Model)
@@ -23,9 +25,9 @@
                     <div class="dashboard__wedders">
                         <div class="dashboard__item">@wedding.wedder_one & @wedding.wedder_two</div>
                     </div>
-                    <div class="dashboard__item">@wedding.wedding_date.ToLongDateString()</div>
-                    <div class="dashboard__item">0</div>
-                    <div class="dashboard__item">
+                    <div class="dashboard__date">@wedding.wedding_date.ToLongDateString()</div>
+                    <div class="dashboard__guest">0</div>
+                    <div class="dashboard__actions">
                         <a href="/rsvp" class="dashboard__link">RSVP</a>
                         <a href="/wedding/@wedding.wedding_id" class="dashboard__link">View</a>
                         <a href="/delete/wedding/@wedding.wedding_id" class="dashboard__link">delete</a>

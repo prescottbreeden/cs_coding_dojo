@@ -8,7 +8,8 @@
   --pink: #F68381;
   --light-pink: #f8a2a1;
 
-  --boxshadow: 0 1rem 3rem rgba(0,0,0,.3);
+  --transition: var(--transition);
+  --boxshadow: 0 1rem 2rem rgba(0,0,0,.1);
   --bradius: 5px;
   --gradient: linear-gradient(
     to bottom right,
@@ -85,7 +86,7 @@ h1 {
   border-radius: 5px;
   background-color: var(--purple);
   color: var(--white);
-  transition: all .3s;
+  transition: var(--transition);
 }
 
 .nav__link:hover {
@@ -121,26 +122,33 @@ h1 {
   box-sizing: border-box;
   background-color: transparent;
   padding: 1.5rem 4rem;
-  border: 1px solid var(--white);
+  /* border: 1px solid var(--white); */
   color: var(--white);
-  border-radius: 20px;
-  width: 100%;
+  border-radius: var(--bradius);
+  width: 62%;
   font-family: 'Playfair Display', serif;
+  font-weight: 300;
   text-transform: uppercase;
+  text-align: right;
   background-color: var(--purple);
+  font-size: 3rem;
   margin-bottom: 4rem;
+  margin-right: auto;
 }
 .form button {
-  width: 50%;
+  margin-left: auto;
+  width: 60%;
   padding: 1rem 3rem;
   background-color: var(--purple);
-  border: 1px solid var(--white);
-  border-radius: 20px;
+  /* border: 1px solid var(--white); */
+  border: none;
+  border-radius: var(--bradius);
   color: var(--white);
+  text-align: left;
   text-transform: uppercase;
   font-size: 3rem;
   font-family: 'Playfair Display', serif;
-  transition: all .3s;
+  transition: var(--transition);
 }
 button:hover {
   cursor: pointer;
@@ -194,7 +202,8 @@ button:hover {
   width: 100%;
   margin: 0 auto;
   /* margin-bottom: 3rem; */
-  background-color: var(--light-purple);
+  background-color: var(--purple);
+  /* background-image: var(--gradient); */
   padding: 1rem 3rem;
   padding-bottom: 8rem;
   border-radius: var(--bradius);
@@ -207,18 +216,25 @@ button:hover {
 }
 .dashboard__list {
   box-sizing: border-box;
-  background-image: var(--light-purple);
+  background-color: var(--light-purple);
   min-height: 20rem;
   padding: 3rem;
   box-shadow: var(--boxshadow);
+  margin-top: 1.5rem;
 }
 .dashboard__wedders {
+  display: inline-block;
   min-width: 40%;
+}
+.dashboard__item {
+  width: 40%;
+  display: flex;
+  justify-content: space-between !important;
 }
 .dashboard__row {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin-bottom: 1rem;
   border-bottom: 1px solid var(--black);
 }
@@ -241,12 +257,13 @@ button:hover {
   background-color: var(--purple);
   color: var(--white);
   text-align: right;
-  transition: all .2s;
+  transition: var(--transition);
   border-radius: var(--bradius);
 }
 
 .dashboard__btn:hover {
   background-color: var(--blue);
+  box-shadow: var(--boxshadow);
 }
 
 .new-wedding {
