@@ -1,0 +1,79 @@
+                            +---------------------+
+                            |  CRITICAL THINKING  |
+                            +---------------------+
+
+Discuss the following questions in groups of 2-3 people.
+
+- How do classes store data?
+
+- How do classes manipulate field values (i.e. data)?
+
+- What is encapsulation and why is it important in programming?
+
+- Circle the necessary properties to define the following behavior:
+
+    read-and-write:   get;   set;
+
+    read-only:        get;   set;
+
+    write-only:       get;   set;
+
+- What are some times where you might wish to make a field:
+
+
+    read-and-write:   _______________________________________________
+
+
+    read-only:        _______________________________________________
+
+
+    write-only:       _______________________________________________
+
+
+- What is a method signature and how are they related to overloading?
+
+
+
+
+
+- What are the advantages/disadvantages of creating multiple overloads for a 
+    class constructor?
+
+
+
+
+- What are the advantages/disadvantages of creating multiple overloads for a 
+    class method?
+
+
+
+
+- What is the benefit of initializing fields during declaration versus during a 
+    constructor?
+
+    --------- example 1 ----------
+
+      public class Person
+      {
+        private List<string> favoriteMovies;
+
+        public Person(string name)
+        {
+          favoriteMovies = new List<string>();
+        }
+      }
+
+    --------- example 2 ----------
+
+      public class Person
+      {
+        private List<string> favoriteMovies = new List<string>();
+
+        public Person()
+        {
+
+        }
+      }
+
+  **hint**  What if our class has 3 or more constructors utilizing different 
+            overloads, does this impact our thoughts?

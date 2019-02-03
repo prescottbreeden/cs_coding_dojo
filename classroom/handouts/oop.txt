@@ -1,0 +1,89 @@
+               ..................................................
+               .                                                .
+               .        C# OOP: useful jargon and concepts      .
+               .                                                .
+               ..................................................
+
++-----------+
+|  CLASSES  |
++-----------+
+ ... are the building blocks of C# software applications
+ ... encapsulate data (stored in fields) and behavior (defined by methods).
+
++-----------+
+|  OBJECTS  |
++-----------+
+ ... are an instance of a class.  We can create an object using the new operator. 
+      ( e.g. User bob = new User(); )
+
++----------------+
+|  CONSTRUCTORS  |
++----------------+
+ ... are methods that are called when an instance of a class is created.
+ ... should have the exact same name as the class.
+ ... can be overloaded.* 
+
++-----------+
+|  METHODS  |
++-----------+
+ ... provide functions which perform some kind of behavior
+
+ Method Signature:
+    * Signature of a method consists of the number, type, & order of parameters.
+    * Overloading a method means creating additional methods with the same name 
+      but with different signatures.
+
++----------+
+|  FIELDS  |
++----------+
+ ... store the data/values of a class
+ ... can be initialized either with a constructor or directly upon declaration.
+
++--------------------+
+|  ACCESS MODIFIERS  |
++--------------------+
+ C# has 6 access modifiers: 
+    * public, private, protected, internal, protected internal, private protected
+    * the most important thing is to be comfortable with implementing 
+      PUBLIC and PRIVATE access modifiers.
+
+ A class member declared with public is accessible everywhere.
+ A class member declared with private is accessible ONLY from inside the class.
+
++--------------+
+|  PROPERTIES  |
++--------------+
+ "GET" --> used to return a field value
+ "SET" --> used to assign a field value
+
+ ... can have different access levels (e.g. public get and private set). 
+
+ Descriptions attributed to property access levels:
+
+    read-and-write: has both a get and a set accessor
+    read-only: has only a get accessor and no set accessor
+    write-only: has only a set accessor but no get accessor (rare)
+
+ Simple properties that require no custom accessor code can be implemented as an 
+    auto-implemented property (e.g. { get; set; } ).
+
+ A quick way to create a field with auto-implemented properties is to type "prop" 
+    and press tab.
+
+ Generally speaking, we want to declare fields as private and create public 
+    properties to provide access to them.
+
+-------------------------------------------------------------------------------
+                     **********  Major Takeaway   *********
+
+ Access Modifiers hide the implementation details of a class.  Anything that is 
+  about "how" a class does its job should be declared as private.  This way we 
+  make sure other parts of the code will not touch the implementation details 
+  of a class -- improving the robustness of our code!  When we make a practice 
+  of this, any changes that need to be made in the way a class is implemented 
+ will only need to be made in a single file (i.e. that specific class) because 
+ we are limiting other parts of our codebase from interacting directly with the 
+                        data encapsulated by the class.
+
+-------------------------------------------------------------------------------
+
