@@ -6,8 +6,8 @@ namespace VehicleInheritance
 {
     class Vehicle
     {
-        private double Odometer { get; set; }
-        private int NumPassengers { get; set; }
+        public double Odometer { get; set; }
+        public int NumPassengers { get; set; }
 
         public Vehicle(int num)
         {
