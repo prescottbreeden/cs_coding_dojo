@@ -1,4 +1,4 @@
-﻿namespace VehicleInheritance
+﻿ VehicleInheritance
 {
   class Car : Vehicle, IRideable
   {
