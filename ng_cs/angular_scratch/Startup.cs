@@ -49,7 +49,15 @@ namespace angular_scratch
 
             app.UseSpa(spa =>
             {
-                // spa.Options.SourcePath = "Public/dist/Public";
+                spa.Options.SourcePath = "Public";
+                // spa.UseSpaPrerendering(options => 
+                // {
+                //     options.BootModulePath = $"{spa.Options.SourcePath}/dist/main.bundle.js";
+                //     options.BootModuleBuilder = env.IsDevelopment()
+                //         ? new AngularCliBuilder(npmScript: "build:ssr")
+                //         : null;
+                //     options.ExcludeUrls = new[] { "/sockjs-node" };
+                // })
                 spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
             });
         }

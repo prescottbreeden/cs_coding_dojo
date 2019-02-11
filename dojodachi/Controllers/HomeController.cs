@@ -15,43 +15,43 @@ namespace dojodachi.Controllers
     [HttpGet("")]
     public IActionResult Index()
     {
-      Dojodachi dojo = GetDojodachi();
+      Dojodachi dojo = DojodachiHelper.Get(HttpContext);
       return View(dojo);
     }
 
     [HttpGet("/feed")]
     public IActionResult Feed()
     {
-      Dojodachi dojo = GetDojodachi();
+      Dojodachi dojo = DojodachiHelper.Get(HttpContext);
       dojo.Feed();
-      SaveDojodachi(dojo);
+      DojodachiHelper.Save(HttpContext, dojo);
       return RedirectToAction("Index");
     }
 
     [HttpGet("/play")]
     public IActionResult Play()
     {
-      Dojodachi dojo = GetDojodachi();
+      Dojodachi dojo = DojodachiHelper.Get(HttpContext);
       dojo.Play();
-      SaveDojodachi(dojo);
+      DojodachiHelper.Save(HttpContext, dojo);
       return RedirectToAction("Index");
     }
 
     [HttpGet("/work")]
     public IActionResult Work()
     {
-      Dojodachi dojo = GetDojodachi();
+      Dojodachi dojo = DojodachiHelper.Get(HttpContext);
       dojo.Work();
-      SaveDojodachi(dojo);
+      DojodachiHelper.Save(HttpContext, dojo);
       return RedirectToAction("Index");
     }
 
     [HttpGet("/sleep")]
     public IActionResult Sleep()
     {
-      Dojodachi dojo = GetDojodachi();
+      Dojodachi dojo = DojodachiHelper.Get(HttpContext);
       dojo.Sleep();
-      SaveDojodachi(dojo);
+      DojodachiHelper.Save(HttpContext, dojo);
       return RedirectToAction("Index");
     }
 
@@ -59,28 +59,9 @@ namespace dojodachi.Controllers
     public IActionResult Reset()
     {
       Dojodachi dojo = new Dojodachi();
-      SaveDojodachi(dojo);
+      DojodachiHelper.Save(HttpContext, dojo);
       return RedirectToAction("Index");
     }
 
-    public Dojodachi GetDojodachi()
-    {
-      string dd = HttpContext.Session.GetString("dachi");
-      if (dd is null)
-      {
-        Dojodachi dojo = new Dojodachi();
-        HttpContext.Session.SetString("dachi", JsonConvert.SerializeObject(dojo));
-        return dojo;
-      }
-      else
-      {
-        Dojodachi dojo = JsonConvert.DeserializeObject<Dojodachi>(dd);
-        return dojo;
-      }
-    }
-    public void SaveDojodachi(Dojodachi dojo)
-    {
-      HttpContext.Session.SetString("dachi", JsonConvert.SerializeObject(dojo));
-    }
   }
 }
