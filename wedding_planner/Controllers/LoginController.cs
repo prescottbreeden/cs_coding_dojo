@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Identity;
 
 namespace wedding_planner.Controllers
 {
-    public class HomeController : Controller
+  public class LoginController : Controller
     {
         private WeddingDb dbContext;
-        public HomeController(WeddingDb context)
+        public LoginController(WeddingDb context)
         {
             dbContext = context;
         }
@@ -77,31 +77,5 @@ namespace wedding_planner.Controllers
             return View(Model);
         }
 
-        [HttpGet("/new")]
-        public IActionResult CreateWedding()
-        {
-            int? id = HttpContext.Session.GetInt32("user_id");
-            if (id is null) return RedirectToAction("Index"); 
-            ViewBag.userId = id;
-            return View();
-        }
-
-        [HttpPost("/process")]
-        public IActionResult ProccessWedding(NewWedding wedding)
-        {
-            int? id = HttpContext.Session.GetInt32("user_id");
-            if (id is null) return RedirectToAction("Index"); 
-
-            if(ModelState.IsValid)
-            {
-                dbContext.CreateNewWedding(wedding);
-                return RedirectToAction("Dashboard");
-            }
-            else 
-            {
-                ViewBag.userId = id;
-                return View("CreateWedding");
-            }
-        }
     }
 }
