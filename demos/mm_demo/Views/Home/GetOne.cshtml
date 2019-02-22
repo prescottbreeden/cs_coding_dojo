@@ -1,0 +1,10 @@
+@model Person
+
+<h1>@Model.Name's Subscriptions</h1>
+num subs: @Model.Subscriptions.Count
+@{
+  foreach(var sub in @Model.Subscriptions)
+  {
+    <p>@sub.Magazine.MagazineId -- @sub.Magazine.Title</p>
+  }
+}

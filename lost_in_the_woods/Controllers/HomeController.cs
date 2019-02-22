@@ -9,26 +9,26 @@ using lost_in_the_woods.Factory;
 
 namespace lost_in_the_woods.Controllers
 {
-    public class HomeController : Controller
+  public class HomeController : Controller
+  {
+    public readonly TrailFactory trailFactory;
+    public HomeController()
     {
-        public readonly TrailFactory trailFactory;
-        public HomeController()
-        {
-            trailFactory = new TrailFactory();
-        }
-
-        [HttpGet("")]
-        public IActionResult Index()
-        {
-            ViewBag.alltrails = trailFactory.FindAll();
-            return View();
-        }
-
-        [HttpPost("new")]
-        public IActionResult NewTrail(Trail trail)
-        {
-            trailFactory.Add(trail);
-            return RedirectToAction("Index");
-        }
+      trailFactory = new TrailFactory();
     }
+
+    [HttpGet("")]
+    public IActionResult Index()
+    {
+      ViewBag.alltrails = trailFactory.FindAll();
+      return View();
+    }
+
+    [HttpPost("new")]
+    public IActionResult NewTrail(Trail trail)
+    {
+      trailFactory.Add(trail);
+      return RedirectToAction("Index");
+    }
+  }
 }
