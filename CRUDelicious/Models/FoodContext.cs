@@ -5,6 +5,7 @@ namespace CRUDelicious.Models
   public class FoodContext : DbContext
   {
     public FoodContext(DbContextOptions<FoodContext> options) : base(options) { }
-    public DbSet<Dish> dishes { get; set; }
+    public DbSet<Dish> Dishes { get; set; }
+    public DbSet<Chef> Chefs { get; set; }
   }
 }

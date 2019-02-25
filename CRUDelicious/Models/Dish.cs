@@ -1,19 +1,20 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CRUDelicious
 {
   public class Dish
   {
-    [Key]
-    public int dish_id { get; set; }
-    public string name { get; set; }
-    public string chef { get; set; }
-    public int tastiness { get; set; }
-    public int calories { get; set; }
-    public string description { get; set; }
-    
-    public DateTime created_at { get; set; }
-    public DateTime updated_at { get; set; }
+    public int DishId { get; set; }
+    public string Name { get; set; }
+    public int Tastiness { get; set; }
+    public int Calories { get; set; }
+    public string Description { get; set; }
+    public int ChefId { get; set; }
+    public Chef Chef { get; set; }
+    public List<Dish> Dishes { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
+    public DateTime UpdatedAt { get; set; } = DateTime.Now;
   }
 }
