@@ -1,0 +1,15 @@
+Black Belt:
+- Special chars in password
+- Past date validation
+- Don't show past activities
+- Conflict detection 
+
+Red Belt:
+- everything else?
+
+Notes:
+- Conflict detection is a little tough imo for most students
+- Time field could be more explicit (avoid students passing in strings)
+- The Join button might be worth adding as black belt as it tends to be one
+  of those things that is tough for students to visualize under stress even
+  if it's the exact logic used on the dashboard view.

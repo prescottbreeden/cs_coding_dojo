@@ -1,0 +1,4 @@
+black belt: 
+
+sort by time remaining ascending
+funds are transfered to winning bid and xfer money to poster

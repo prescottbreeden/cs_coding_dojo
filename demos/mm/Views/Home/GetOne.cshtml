@@ -1,9 +1,0 @@
-@model Person
-
-<h1>@Model.Name's Subscriptions</h1>
-@{
-  foreach(var subscription in @Model.Subscriptions)
-  {
-    <p>@subscription.Magazine.MagazineId -- @subscription.Magazine.Title</p>
-  }
-}
