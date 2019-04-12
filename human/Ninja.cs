@@ -2,7 +2,6 @@
 
 namespace human
 {
-
     class Ninja : Human
     {
         public Ninja(string name) : base(name)

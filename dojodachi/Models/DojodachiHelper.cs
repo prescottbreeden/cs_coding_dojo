@@ -5,24 +5,25 @@ namespace dojodachi.Models
 {
   public static class DojodachiHelper
   {
-    public static Dojodachi Get(HttpContext context)
+    private static Dojodachi dojo;
+
+    public static Dojodachi Get(HttpContext _)
     {
-      string dd = context.Session.GetString("dachi");
-      if (dd is null)
+      string session = _.Session.GetString("dachi");
+      if (session is null)
       {
-        Dojodachi dojo = new Dojodachi();
-        context.Session.SetString("dachi", JsonConvert.SerializeObject(dojo));
-        return dojo;
+        dojo = new Dojodachi();
+        _.Session.SetString("dachi", JsonConvert.SerializeObject(dojo));
       }
       else
-      {
-        Dojodachi dojo = JsonConvert.DeserializeObject<Dojodachi>(dd);
-        return dojo;
-      }
+        dojo = JsonConvert.DeserializeObject<Dojodachi>(session);
+
+      return dojo;
     }
-    public static void Save(HttpContext context, Dojodachi dojo)
+
+    public static void Save(HttpContext _, Dojodachi dojo)
     {
-      context.Session.SetString("dachi", JsonConvert.SerializeObject(dojo));
+      _.Session.SetString("dachi", JsonConvert.SerializeObject(dojo));
     }
 
   }

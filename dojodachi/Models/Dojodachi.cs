@@ -92,17 +92,7 @@ namespace dojodachi.Models
 
     public void UpdateStatus()
     {
-      if (!IsDead)
-      {
-        IsFeeling();
-
-        if (Meals <= 0)
-          Status = "You've run out of meals!";
-
-        if (Fullness >= 100 && Energy >= 100 && Happiness >= 100)
-          Win();
-      }
-      else
+      if (IsDead)
       {
         if (Fullness <= 0 && Happiness <= 0)
           Status = "Dojodachi died of depression and starvation. This is why we can't have nice things.";
@@ -115,6 +105,16 @@ namespace dojodachi.Models
 
         else if (Energy <= 0)
           Status = "Dojodachi died of exhaustion. This is why we can't have nice things.";
+      }
+      else
+      {
+        IsFeeling();
+
+        if (Meals <= 0)
+          Status = "You've run out of meals!";
+
+        if (Fullness >= 100 && Energy >= 100 && Happiness >= 100)
+          Win();
       }
     }
 
